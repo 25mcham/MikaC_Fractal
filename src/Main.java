@@ -17,19 +17,26 @@ public class Main extends PApplet {
     }
 
     public void draw() {
+        frameRate(10);
         background(0);
         fractalIt((width-side)/2 ,(height-side)/2, side);
     }
 
     public void fractalIt(double x, double y, double s) {
         if(s > 20){
+            int c = rand.nextInt(100)+100;
+            fill(c);
+            stroke(c-100);
             rect((float)x,(float)y,(float)s,(float)s);
-            stroke(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255));
+            //stroke(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255));
             fractalIt(x-(mult * s),y-(mult * s), 2 *mult * s);
             fractalIt(x +((1-mult)*s),y + ((1-mult) * s), 2* mult * s);
         } else if ( s <= 20){
+            int c = rand.nextInt(100)+50;
+            fill(c);
+            stroke(c-100);
             rect((float)x,(float)y,(float)s,(float)s);
-            stroke(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255));
+            //stroke(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255));
         }
     }
 }
